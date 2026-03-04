@@ -7,7 +7,7 @@ from datetime import timedelta
 import logging
 from typing import Any
 
-import chardet
+import charset_normalizer
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_HOST, CONF_NAME, CONF_SCAN_INTERVAL, Platform
@@ -28,7 +28,7 @@ _LOGGER: logging.Logger = logging.getLogger(__package__)
 def autodetect_encoding(content):
     """Autodetect encoding of text."""
 
-    return chardet.detect(content).get("encoding")
+    return charset_normalizer.detect(content).get("encoding")
 
 
 @dataclass
